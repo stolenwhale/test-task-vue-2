@@ -1,0 +1,122 @@
+.main-todo-list-item {
+  $b: &;
+
+  display: flex;
+  position: relative;
+  padding: 8px 0;
+
+  .animated & {
+    pointer-events: none;
+  }
+
+  &__text {
+    @include font('400 14px/1.2');
+    color: $color-font;
+    transition: color $transition-default;
+    padding: 3px 5px;
+    margin: -3px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    width: 100%;
+    margin-right: 20px;
+    transition: border-color $transition-default;
+
+    &:focus {
+      outline: none;
+    }
+
+    &_completed {
+      color: $color-gray;
+    }
+
+    &_edit {
+      border-color: $color-gray-light;
+    }
+  }
+
+  &__info {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__controls {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  &__handle {
+    cursor: pointer;
+    padding: 10px;
+    margin: -10px 0 -10px -10px;
+    box-sizing: content-box;
+    opacity: 0;
+    transition: $transition-default;
+
+    .animated #{$b}:hover & {
+      opacity: 0;
+    }
+
+    .smooth-dnd-ghost &,
+    #{$b}:hover & {
+      opacity: 1;
+    }
+  }
+
+  &__handle-icon {
+    @include box(16px);
+    fill: $color-gray;
+  }
+
+  &__controls-button {
+    @include button-reset;
+    cursor: pointer;
+    padding: 16px;
+    margin: -16px;
+    display: flex;
+
+    &_edit {
+      margin-right: 0;
+    }
+  }
+
+  &__controls-icon {
+    @include box(16px);
+    transition: fill $transition-default;
+
+    &_edit {
+      fill: rgba($color-font, 0.65);
+
+      #{$b}__controls-button:hover & {
+        fill: rgba($color-font, 1);
+      }
+
+      #{$b}__controls-button:active & {
+        fill: rgba($color-font, 0.4);
+      }
+
+      #{$b}__controls-button_active &,
+      #{$b}__controls-button_active:hover & {
+        fill: $color-primary;
+      }
+    }
+
+    &_remove {
+      fill: $color-error;
+
+      #{$b}__controls-button:hover & {
+        fill: darken($color-error, 20%);
+      }
+
+      #{$b}__controls-button:active & {
+        fill: lighten($color-error, 10%);
+      }
+    }
+  }
+
+  &__checkbox {
+    margin-right: 0;
+  }
+}

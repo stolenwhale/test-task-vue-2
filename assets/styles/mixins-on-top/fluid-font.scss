@@ -1,0 +1,21 @@
+/**
+ * [EN]
+ * Mixin based on `fluid-font-base` mixin to provide less verbose syntax to declare fluid font parameters.
+ * See `fluid-font-base` for details
+ *
+ * [RU]
+ * Миксин, основанный на миксине `fluid-font-base`, чтобы предоставить менее многословный способ объявления параметров.
+ * Смотри `fluid-font-base` для детального объяснения.
+ *
+ * [Example]
+ * fluid-font('14px/1.5', '24px/1.3');
+ *
+ * @param    {string}    $start    Scaling start value structured of 'font-size(any unit)[/line-height(unitless)]'.
+ * @param    {string}    $end      Scaling end value structured of 'font-size(any unit)[/line-height(unitless)]'.
+ */
+@mixin fluid-font($start, $end) {
+	@include fluid-font-base(
+		($breakpoint-phone-portrait, $start),
+		($breakpoint-desktop, $end)
+	);
+}

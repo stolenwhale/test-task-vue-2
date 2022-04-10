@@ -1,0 +1,25 @@
+.main-todo-form {
+  position: relative;
+
+  &__input {
+    width: 100%;
+    margin-bottom: 20px;
+
+    @media (min-width: $breakpoint-tablet-portrait) {
+      margin-bottom: 0;
+      display: block;
+    }
+  }
+
+  &__button {
+    width: 100%;
+
+    @media (min-width: $breakpoint-tablet-portrait) {
+      position: absolute;
+      top: 0;
+      width: 70px;
+      right: -16px;
+      transform: translateX(100%);
+    }
+  }
+}

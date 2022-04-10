@@ -1,0 +1,28 @@
+/**
+ * [EN]
+ * Substring replacement function.
+ * Note: works only for first occurrence of substring.
+ *
+ * [RU]
+ * Функция для замены подстроки в строке.
+ * Важно: работает только с первым вхождением подстроки.
+ *
+ * [Example]
+ * str-replace('foo string', 'foo', 'bar') --> 'bar string'
+ * str-replace('wow', 'w', 'c') --> 'cow'
+ *
+ * @param      {String}  $string    - Original string.
+ * @param      {String}  $search    - Needle substring.
+ * @param      {String}  $replace   - Replacement string.
+ *
+ * @return     {String}  Original string with replaced values.
+ */
+@function str-replace($string, $search, $replace: '') {
+	$index: str-index($string, $search);
+
+	@if $index {
+		@return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+	}
+
+	@return $string;
+}

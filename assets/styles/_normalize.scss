@@ -1,0 +1,137 @@
+// Much more intuitive behavior
+*, *::before, *::after { box-sizing: border-box; }
+
+/* stylelint-disable-next-line plugin/selector-tag-no-without-class */
+html, body, div, p, blockquote,
+th, td, figure,
+ul, ol, li,
+h1, h2, h3, h4, h5, h6,
+pre, code,
+form, input, button, textarea {
+  margin: 0;
+  padding: 0;
+}
+
+// Some text optimization to normalize font display in different OS.
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-tap-highlight-color: transparent;
+  text-size-adjust: 100%;
+}
+
+// Correct font weight
+b, strong { font-weight: bolder; }
+
+// Format code
+pre, code {
+  font-size: 1em;
+}
+
+// Tab size
+:root {
+  tab-size: 2;
+}
+
+// Prevent from affecting the line height
+sup, sub {
+  position: relative;
+  vertical-align: baseline;
+  font-size: .6em;
+  line-height: 0;
+}
+sup { top: -.7em; }
+sub { top: .7em; }
+
+// Show pointer cursor for clickable elements
+select, button, [type='button'], [type='submit'], [type='reset'], [type='file'] {
+  cursor: pointer;
+}
+
+// Useless thing, we care about through :focus-visible
+*::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+// Say not to tables from 2000!
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// Looks better in many cases
+caption, th {
+  text-align: left;
+}
+
+// Don't looks cool
+li {
+  list-style: none;
+}
+
+// Reset all headings
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight: normal; /* stylelint-disable-line font-weight-notation */
+}
+
+// Normalize text in controls
+input, button, textarea, select, optgroup, option {
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  text-transform: none;
+}
+
+// Obsolete in modern interfaces
+iframe { border: 0; }
+
+// Better view in all cases
+img, video {
+  object-fit: cover;
+}
+
+// Remove cross in inputs
+::-ms-clear, ::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+// Standardize search field
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
+  display: none;
+  appearance: none;
+}
+
+// Trying to restore Chrome autofill view
+input:-webkit-autofill {
+  transition: background-color 999s ease-in-out 0s !important;
+}
+
+// Prevent long tap popup for empty links (a you sure u can't replace them on buttons?)
+a[href='#'] { -webkit-touch-callout: none; }
+
+// In most designs scrollbars and resize looks so rude.
+textarea {
+  overflow: hidden;
+  resize: none;
+}
+
+// You too tired from flashing animations everywhere, i know
+/* stylelint-disable aditayvm/at-rule-no-children */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0s !important;
+    animation-duration: 0s !important;
+  }
+}
+/* stylelint-enable aditayvm/at-rule-no-children */

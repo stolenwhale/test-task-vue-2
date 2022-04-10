@@ -1,0 +1,72 @@
+/**
+ * [EN]
+ * Shorthand for writing font-* rules in syntax like vanilla CSS "font" property,
+ * but without specifying required font-family property.
+ * Note: parameters should be quoted to prevent SASS evaluation.
+ *
+ * [RU]
+ * Краткое свойство для указания font-* свойств в синтаксисе ванильного свойства "font",
+ * но без необходимости обязательно указывать "font-family".
+ * Важно: параметры должны быть заключены в кавычки, чтобы предотвратить выполнение SASS-операций.
+ *
+ * [Example]
+ * .block {
+ *   @include font('48px/1.2');
+ * }
+ *
+ * @param      {String}  $params  - The parameters according to CSS font rule.
+ */
+@mixin font($params, $font-family: null) {
+	$params: inspect($params);
+
+	$font-style:  null;
+	$font-weight: null;
+	$font-size:   null;
+	$line-height: null;
+
+	$font-weight-values: '100' '200' '300' '400' '500' '600' '700' '800' '900' 'bold' 'bolder' 'lighter' 'normal' 'inherit' 'initial';
+	$font-style-values: 'normal' 'italic';
+	$font-size-units: 'px' 'em' 'rem' '%' 'ex' 'ch' 'vw' 'vh'; // Other is dead
+
+	$list: explode($params, ' ');
+
+	@each $param in $list {
+		// Clean value
+		$param: str-replace($param, '"', '');
+		$param: str-replace($param, "'", '');
+		// Font-weight
+		@if (contains($font-weight-values, $param)) {
+			$font-weight: unquote($param);
+		} @else {
+			// Font-style
+			@if (contains($font-style-values, $param)) {
+				$font-style: unquote($param);
+			} @else {
+				// Font-size
+				@if (is_part_of_list($font-size-units, $param) or str-index($param, '/')) {
+					// Font-size and line-height both
+					@if (str-index($param, '/')) {
+						// Just line-height
+						@if (str-index($param, '/') == 1) {
+							$line-height: unquote(str-slice($param, 2));
+						} @else {
+							$temp: explode($param, '/');
+							$font-size: unquote(nth($temp, 1));
+							$line-height: unquote(nth($temp, 2));
+						}
+					} @else {
+						// Only font-size
+						$font-size: unquote($param);
+					}
+				} @else { // Otherwise it's font-family
+					$font-family: unquote(str-replace($param, '_', ' '));
+				}
+			}
+		}
+	}
+	font-family: $font-family;
+	font-size: $font-size;
+	line-height: $line-height;
+	font-style: $font-style;
+	font-weight: $font-weight;
+}

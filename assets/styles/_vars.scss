@@ -1,0 +1,35 @@
+// Fonts
+$font-postfix: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+$font-primary: "Inter", $font-postfix;
+
+//Breakpoints
+
+$breakpoint-phone-portrait   : 320px;
+$breakpoint-phone-standard   : 375px;
+$breakpoint-phone-landscape  : 480px;
+$breakpoint-tablet-portrait  : 768px;
+$breakpoint-tablet-landscape : 1024px;
+$breakpoint-desktop          : 1280px;
+$breakpoint-desktop-middle   : 1440px;
+$breakpoint-desktop-wide     : 1600px;
+$breakpoint-desktop-2k       : 1921px;
+$breakpoint-desktop-4k       : 2561px;
+
+//Colors
+
+$gradient-primary: linear-gradient(0deg, #E0C3FC 0%, #D7BEFC 21.87%, #BCB1FC 42.19%, #A1AEFC 60.94%, #94BDFC 80.73%, #8EC5FC 100%), linear-gradient(0deg, #84FAB0 0%, #85F9BC 21.87%, #88F8D7 42.19%, #8BF6F5 60.94%, #8EDDF5 80.73%, #8FD3F4 100%);
+
+$color-primary: #2578F4;
+$color-secondary: #EF5DA8;
+
+$color-gray: #8F99A3;
+$color-gray-light: #C7CCD1;
+
+$color-surface: #ffffff;
+$color-font: #202427;
+$color-error: #EC3535;
+
+//Transitions
+
+$transition-default: .3s;
+$transition-slow: .5s;

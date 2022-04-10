@@ -1,0 +1,64 @@
+/**
+ * [EN]
+ * Splits a string into a list of strings using specified delimiter.
+ *
+ * [RU]
+ * Разделяет переданную строку в SASS-list, используя переденный разделитель.
+ *
+ * [Example]
+ * $string: 'px,em';
+ * explode($string, ',') --> (px, em)
+ *
+ * @param      {String}  $string     []    - The string to be split
+ * @param      {String}  $delimiter  []    - The delimiter string
+ *
+ * @return     {List}
+ */
+@function explode($string, $delimiter) {
+	$result: ();
+
+	// Just split each char
+	@if $delimiter == '' {
+		@for $i from 1 through str-length($string) {
+			$result: append($result, str-slice($string, $i, $i));
+		}
+
+		@return $result;
+	}
+
+	$exploding: true;
+
+	@while $exploding {
+		$d-index: str-index($string, $delimiter);
+
+		@if $d-index {
+			@if $d-index > 1 {
+
+				$temp-string: str-slice($string, 1, $d-index - 1);
+
+				@if ($temp-string == 'null') { $temp-string: null; }
+
+				$result: append($result, $temp-string);
+
+				$string: str-slice($string, $d-index + str-length($delimiter));
+			} @else if $d-index == 1 {
+
+				$temp-string: str-slice($string, 1, $d-index + str-length($delimiter));
+
+				@if ($temp-string == 'null') { $temp-string: null; }
+
+				$string: $temp-string;
+			} @else {
+				@if ($string == 'null') { $string: null; }
+				$result: append($result, $string);
+				$exploding: false;
+			}
+		} @else {
+			$result: append($result, $string);
+
+			$exploding: false;
+		}
+	}
+
+	@return $result;
+}

@@ -1,0 +1,17 @@
+.main-todo-counts {
+
+  @media (min-width: $breakpoint-tablet-portrait) {
+    display: flex;
+    gap: 30px;
+  }
+
+  &__item {
+    flex-grow: 1;
+    padding: 16px;
+    margin-bottom: 20px;
+
+    @media (min-width: $breakpoint-tablet-portrait) {
+      margin-bottom: 0;
+    }
+  }
+}

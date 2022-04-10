@@ -1,0 +1,20 @@
+/**
+ * [EN]
+ * Checks given list contains the specified string or not.
+ *
+ * [RU]
+ * Проверяет, содержит ли переданный список указанную строку.
+ *
+ * [Example]
+ * $list: px, em;
+ * contains($list, inch) --> false
+ * contains($list, em) --> true
+ *
+ * @param      {List}      $list   - The list
+ * @param      {String}    $item   - The string to search
+ *
+ * @return     {Boolean}   True if value in list, false otherwise.
+ */
+@function contains($list, $item) {
+	@return index($list, $item) != null;
+}

@@ -1,0 +1,28 @@
+/**
+ * [EN]
+ * Searches for the occurrences of the keys of given list in the given value.
+ *
+ * [RU]
+ * Ищет вхождения строки в ключах переданного списка.
+ *
+ * [Example]
+ * $list: px, em;
+ * is_part_of_list($list, px) --> true
+ * is_part_of_list($list, vw) --> false
+ *
+ * @param      {list}     $list   - The list
+ * @param      {string}   $item   - The item
+ *
+ * @return     {boolean}  True if occurrence found, false otherwise.
+ */
+@function is-part-of-list($list, $item) {
+	$found: false;
+
+	@each $param in $list {
+		@if (str-index($item, $param)) {
+			$found: true;
+		}
+	}
+
+	@return $found;
+}

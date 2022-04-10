@@ -1,0 +1,21 @@
+/**
+ * [EN]
+ * Shortcut for describing width/height of element.
+ * Creates a "square" (or "rectangle" if two parameters passed).
+ *
+ * [RU]
+ * Краткое свойство для описания свойств width/height елемента.
+ * Создаёт "квадрат" (или "прямоугольник", если передано два параметра).
+ *
+ * [Example]
+ * .block {
+ *   @include box(20px);
+ * }
+ *
+ * @param      {String}  $width                - The width of element
+ * @param      {String}  $height  [$width]     - The height
+ */
+@mixin box($width, $height: $width) {
+	width: $width;
+	height: $height;
+}

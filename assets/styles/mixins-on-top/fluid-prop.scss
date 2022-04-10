@@ -1,0 +1,23 @@
+/**
+ * [EN]
+ * Mixin based on `fluid-prop-base` mixin to provide less verbose syntax to declare fluid properties.
+ * See `fluid-prop-base` for details
+ *
+ * [RU]
+ * Миксин, основанный на миксине `fluid-prop-base`, чтобы предоставить менее многословный способ объявления свойств.
+ * Смотри `fluid-prop-base` для детального объяснения.
+ *
+ * [Example]
+ * fluid-prop('padding-top', 20px, 40px);
+ *
+ * @param    {string}    $prop     Property name.
+ * @param    {number}    $start    Scaling start value.
+ * @param    {number}    $end      Scaling end value.
+ */
+@mixin fluid-prop($property, $start, $end) {
+	@include fluid-prop-base(
+		$property,
+		($breakpoint-phone-portrait, $start),
+		($breakpoint-desktop, $end)
+	);
+}
