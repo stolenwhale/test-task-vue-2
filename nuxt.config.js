@@ -1,6 +1,13 @@
 export default {
   ssr: false,
   target: 'static',
+  build: {
+    publicPath: '/nuxt/',
+  },
+  router: {
+    base: './',
+    mode: 'hash'
+  },
   head: {
     title: 'test-task-vue-2',
     meta: [
@@ -42,5 +49,4 @@ export default {
       lang: 'en',
     },
   },
-  build: {},
 }
