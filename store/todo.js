@@ -35,6 +35,7 @@ export const actions = {
   },
   setList({ commit, state }, ctx) {
     commit('SET_LIST', ctx);
+    this.$cookies.set(COOKIE_KEY, state.list);
   },
   addToList({ commit, state }, ctx) {
     commit('ADD_TO_LIST', {id: new Date().valueOf(), text: ctx, completed: false});
